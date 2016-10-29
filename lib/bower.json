@@ -1,0 +1,20 @@
+{
+  "name": "lib",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Nathan Ostrander <ostrander_nathan@yahoo.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ostrander-nathan/Jquery-todo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
