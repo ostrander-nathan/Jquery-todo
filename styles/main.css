@@ -1,25 +1,31 @@
+html * {
+  font-family: courier, monospace; }
+
 body {
   background-color: #BFBCBC;
-  width: 800px;
   margin: 0 auto;
   padding: 0; }
+  body button {
+    margin: 0 2px; }
 
 h1 {
-  text-align: center;
   color: #cd0000;
-  font-size: 42px;
-  letter-spacing: -2px; }
+  font-size: 52px;
+  letter-spacing: -8px;
+  margin-left: 70%; }
 
-#submitInput {
-  background-color: #59879b; }
+#submitInputBtn {
+  background-color: #59879b;
+  font-size: 25px; }
 
 .list {
+  margin-left: 5%;
   color: #555;
   font-size: 20px;
-  padding: 0 !important;
-  width: 800px;
-  font-family: courier, monospace;
-  border: 1px dotted #dedede; }
+  padding: 0;
+  width: 1000px;
+  border: 1px dotted #dedede;
+  background-color: #FFFCFC; }
 
 .list li {
   list-style: none;

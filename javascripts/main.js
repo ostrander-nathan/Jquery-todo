@@ -1,66 +1,56 @@
 "use strict";
 $(document).ready(function() {
-	// function getInput() {
-	$('#submitInput').on('click', function (e) {
-	        var value = $('#toDoInput').val();
-	        // var $editValue = $("<li class='editValue'>${value}</li>");
-	        // console.log("$editValue",$editValue )
-	        // var $newListItem.append($editBtn)
-	        var newElement = $(`<div class = 'newToDoList' id="toDoId"><ol><li class="editValue">${value}</li></ol><br><button class='editBtn'>Edit</button><button class="deleteBtn">Delete</button><button class="completeBtn">Completed</button>`);
-	        var $editBtn = $("<button class='editBtn'>Edit</button>");
-	        // console.log("$editBtn",$editBtn );
+
+	let $submitInputBtn = $("#submitInputBtn");
+	let $inputField = $("#inputField");
+	let $editValue = $(".editValue");
+
+
+	$submitInputBtn.on('click', function(value) {
+	    value = $inputField.val();
+	    
+	    let newElement = $(`<div class = 'newToDoList' id="toDoId"><li class="editValue">${value}</li></div><br><div class="btnHolder"><button class='editBtn'>Edit</button><button class="deleteBtn">Delete</button><button class="completeBtn">Completed</button>`);
+	    // if ($inputField.val().length === 0) { // disable button if nothing is typed not working correctly
+	    // 	$submitInputBtn.attr("disabled", true);
+	    // }
+		    $("#output").append(newElement);
+		    $inputField.val("");
+
+	    // EDIT BUTTON CLICK
+	    newElement.find(".editBtn").on("click", function() {
+	      $inputField.focus(); /// focuses on button text
+	      $submitInputBtn.text("Update") // just updates button text
+	        .on("click", function() { // once its clicked
+
+	          $editValue.appendTo($inputField.val());
+	          $submitInputBtn.text("Add to List");
+	        });
+	    });
+
+	    // DELETE BUTTON CLICK
+	    newElement.find(".deleteBtn").on("click", function() {
+	      newElement.remove();
+	    });
+
+	    // COMPLETE BUTTON CLICK
+	    newElement.find(".completeBtn").on("click", function() {
+	      $("#done").append(newElement)
+	        .append(`<br><button class="unComplete">Un-Complete</button>`);
+	      $(".completeBtn").hide(this);
+	      $(".deleteBtn").hide(this);
+	      $(".editBtn").hide(this);
+
+	      // UN-COMPLETE BUTTON CLICK
+	      let $uncomplete = $(".unComplete");
+	      $uncomplete.on("click", function() {
 	        $("#output").append(newElement);
-	        console.log("value",value );
-
-	        // Give new IDs to output
-	        var i = 1;
-	        newElement.find(".newToDoList").click(function() {
-			  $("<div />", { "class":"newToDoList", id:"toDoId"+i })
-			     .appendTo("#output");
-			  i++;
-			});
-
-	        // EDIT BUTTON CLICK
-	        newElement.find(".editBtn").on("click", function(){
-	        	$("#toDoInput").focus();
-	        	$('#submitInput').text("Update")
-	        		.on("click", function(){
-	        	$(".editValue");
-	        	$(this).prev(value).append(newElement.value);
-	        	$('#submitInput').text("Add to List");
-	        	});
-	        });
-
-	       // DELETE BUTTON CLICK
-	        newElement.find(".deleteBtn").on("click", function(){
-	        	console.log("deleteBtn working");
-	        	newElement.remove();
-	        });
-
-	        // COMPLETE BUTTON CLICK
-	        newElement.find(".completeBtn").on("click", function(){
-  				$("#done")
-  				.append($(this).parent())
-  				.append(`<br><button class="unComplete">Un-Complete</button>`);
-  				$(".completeBtn").hide(this);
-  				$(".deleteBtn").hide(this);
-  				$(".editBtn").hide(this);
-
-	        // UN-COMPLETE BUTTON CLICK
-	        let $uncomplete = $(".unComplete");
-  				$uncomplete.on("click", function(){
-  				$("#output")
-  				.append(newElement);
-  				$(".completeBtn").show(this);
-  				$(".deleteBtn").show(this);
-  				$(".editBtn").show(this);
-  				$(".unComplete").hide();
-	        	console.log("uncomplete clicked");
-
-  				});
-
-	        });
-});
+	        $(".completeBtn").show(this);
+	        $(".deleteBtn").show(this);
+	        $(".editBtn").show(this);
+	        $(".unComplete").hide();
+	      });
+	    });
+  });
 });
 
 /// 1) Should I place variables to hold id/classes to make my code less shitty
