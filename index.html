@@ -8,23 +8,26 @@
 	<link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+<div>
+	
 <h1>Jquery-todo</h1>
 
-<div class= "container col-md-4" >
-  <div class="panel-body">
-  
+	<ul class="list col-md-12">
+	  <input class="form-control" type="text" id="toDoInput" placeholder="Enter List Item"/>
+	  <button type="button" class="btn btn-primary btn-lg btn-block" id="submitInput">Add to List</button>
+
+	<div class="content-secondary col-md-6">
+	  <div id="output">
+	    <h3>To do List:</h3>
+	  </div>
+	</div>
 	
-   <input type="text" id="toDoInput" placeholder="Enter List Item" />
-  	<button type="button" class="btn btn-primary btn-lg" id="submitInput">Add to List</button>
-  	<!-- <button type="button" class="btn btn-primary btn-lg" id="day3Button">3 Day Forecast</button> -->
-  	<!-- <button type="button" class="btn btn-primary btn-lg" id="day7Button">7 Day Forecast</button> -->
-</div>
-<div id="output">
-	<h3>To do List:</h3>
-</div>
-<div id="done">
-	<h3>Completed List:</h3>
-</div>
+	<div class="content-done col-md-6">
+	    <h3>Completed List:</h3>
+	  <div id="done">
+	  </div>
+	</div>
+	</ul>
 </div>
 
 	
