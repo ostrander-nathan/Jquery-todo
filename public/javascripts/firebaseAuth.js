@@ -1,40 +1,40 @@
 'use strict';
 // same file everytime
-var FbAPI = (function(oldFirebase){
-  
-  oldFirebase.registerUser = function(credentials){
-    return new Promise((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
-      .then((authData) =>{
-        resolve(authData);
-      })
-      .catch((error)=>{
-        reject(error);
-      });
-    });
-  };
+var FbAPI = (function(oldFirebase) {
 
-  oldFirebase.loginUser = function(credentials){
-    return new Promise((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
-      .then((authData) =>{
-        resolve(authData);
-      })
-      .catch((error)=>{
-        reject(error);
-      });
-    });
-  };
+    oldFirebase.registerUser = function(credentials) {
+        return new Promise((resolve, reject) => {
+            firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
+                .then((authData) => {
+                    resolve(authData);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    };
 
-  oldFirebase.credentialsCurrentUser = function(){
-    return firebase.auth().currentUser;
-  };
+    oldFirebase.loginUser = function(credentials) {
+        return new Promise((resolve, reject) => {
+            firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
+                .then((authData) => {
+                    resolve(authData);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    };
 
-  oldFirebase.logoutUser = function(){
-     firebase.auth().signOut();
-  };
+    oldFirebase.credentialsCurrentUser = function() {
+        return firebase.auth().currentUser;
+    };
+
+    oldFirebase.logoutUser = function() {
+        firebase.auth().signOut();
+    };
 
 
-return oldFirebase;
+    return oldFirebase;
 
 })(FbAPI || {});
